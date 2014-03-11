@@ -16,7 +16,7 @@ set title
 set titleold=
 
 " Lines
-set nonumber
+set number
 set nolist
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set noshowcmd
