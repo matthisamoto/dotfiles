@@ -13,12 +13,10 @@
     ui     = true
 [help]
     autocorrect = 1
-
 [mergetool]
     keepBackup = true
 [diff]
     algorithm = patience
-
 [branch]
     autosetuprebase = always
 [push]
@@ -35,6 +33,7 @@
     undo           = reset --soft HEAD^
     track          = checkout -t
     prep           = rebase -i @{upstream}
+    up             = !git remote update -p; git merge --ff-only @{u}
 
     human          = name-rev --name-only
     ours           = '!f() { git checkout --ours $@ && git add $@; }; f'
