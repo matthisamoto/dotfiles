@@ -33,7 +33,7 @@
     undo           = reset --soft HEAD^
     track          = checkout -t
     prep           = rebase -i @{upstream}
-    up             = !git remote update -p; git merge --ff-only @{u}
+    up             = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
 
     human          = name-rev --name-only
     ours           = '!f() { git checkout --ours $@ && git add $@; }; f'
@@ -42,3 +42,5 @@
     edit-conflicts = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
     prune-remote   = !git remote | xargs -n 1 git remote prune
     new-commits    = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+[credential]
+    helper = osxkeychain
