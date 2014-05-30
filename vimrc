@@ -6,6 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'flazz/vim-colorschemes'
@@ -149,9 +150,8 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-q> <C-w>q
 
-noremap <leader>p :CtrlP<CR>
-noremap <leader>f :CtrlPCurFile<CR>
-noremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>p :Unite file_rec/async<cr>
+nnoremap <leader>/ :Unite grep:.<cr>
  
 nnoremap Y y$
 
@@ -159,9 +159,6 @@ nnoremap Y y$
 inoremap <C-L> <C-X><C-L>
 inoremap <C-F> <C-X><C-F>
 inoremap <C-O> <C-X><C-O>
-
-" quick access to ack
-noremap <leader>a :Ack 
 
 " formatting
 nnoremap Q gqip
