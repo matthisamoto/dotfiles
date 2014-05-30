@@ -1,7 +1,6 @@
 set nocompatible
 filetype off
 
-"execute pathogen#infect()
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -65,12 +64,12 @@ set linebreak
 set breakat=\ |@-+;:,./?^I
 
 " Status line
-"set laststatus=2
-"set statusline+=%f\ [%{fugitive#head()}]
-"set statusline+=%=
-"set statusline+=%{SyntasticStatuslineFlag()}%*
-"set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
-"set statusline+=\ [%l,%c]\ %P
+set laststatus=2
+set statusline+=%f\ [%{fugitive#head()}]
+set statusline+=%=
+set statusline+=%{SyntasticStatuslineFlag()}%*
+set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
+set statusline+=\ [%l,%c]\ %P
 
 " Undo
 set undofile
@@ -101,6 +100,7 @@ set complete=.,t
 " Buffers
 " ---------------------------------
 
+set autochdir
 set hidden
 set noswapfile
 set dir=~/.vim/tmp/swap/
@@ -150,8 +150,12 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-q> <C-w>q
 
-nnoremap <leader>p :Unite file_rec/async<cr>
-nnoremap <leader>/ :Unite grep:.<cr>
+" Unite settings
+nnoremap <leader>p :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
+nnoremap <leader>f :Unite -no-split -buffer-name=files -start-insert file<cr>
+nnoremap <leader>b :Unite -no-split -buffer-name=buffer -start-insert buffer<cr>
+nnoremap <leader>y :Unite -no-split -buffer-name=yank history/yank<cr>
+nnoremap <leader>/ :Unite -toggle grep:.<cr>
  
 nnoremap Y y$
 
