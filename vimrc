@@ -1,5 +1,19 @@
 set nocompatible
-execute pathogen#infect()
+filetype off
+
+"execute pathogen#infect()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
+Plugin 'danro/rename.vim'
+
+call vundle#end()
 filetype plugin indent on
 
 " ---------------------------------
@@ -50,12 +64,12 @@ set linebreak
 set breakat=\ |@-+;:,./?^I
 
 " Status line
-set laststatus=2
-set statusline+=%f\ [%{fugitive#head()}]
-set statusline+=%=
-set statusline+=%{SyntasticStatuslineFlag()}%*
-set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
-set statusline+=\ [%l,%c]\ %P
+"set laststatus=2
+"set statusline+=%f\ [%{fugitive#head()}]
+"set statusline+=%=
+"set statusline+=%{SyntasticStatuslineFlag()}%*
+"set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
+"set statusline+=\ [%l,%c]\ %P
 
 " Undo
 set undofile

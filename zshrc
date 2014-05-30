@@ -21,3 +21,5 @@ fi
 for file ($ZSH/modules/**/*.zsh) source $file
 
 TERM=screen-256color
+
+eval "$(rbenv init -)"
