@@ -190,6 +190,8 @@ cmap w!! %!sudo tee > /dev/null %
 " ---------------------------------
 " Plugins
 " ---------------------------------
+let go_highlight_structs = 0
+let go_highlight_methods = 0
 
 let g:fuf_file_exclude = '\v\.DS_Store|\.bak|\.swp'
 let g:statline_show_encoding = 0
