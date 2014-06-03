@@ -12,6 +12,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'danro/rename.vim'
+Plugin 'ScrollColors'
 
 call vundle#end()
 filetype plugin indent on
@@ -23,7 +24,7 @@ filetype plugin indent on
 set encoding=utf-8
 set t_Co=256
 syntax on
-colorscheme default
+colorscheme grb256
 set mouse=a
 set visualbell t_vb=
 set title
@@ -100,7 +101,6 @@ set complete=.,t
 " Buffers
 " ---------------------------------
 
-set autochdir
 set hidden
 set noswapfile
 set dir=~/.vim/tmp/swap/
@@ -150,12 +150,17 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-q> <C-w>q
 
+nnoremap [unite] <Nop>
+nmap <leader>f [unite]
+
 " Unite settings
-nnoremap <leader>p :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
-nnoremap <leader>f :Unite -no-split -buffer-name=files -start-insert file<cr>
-nnoremap <leader>b :Unite -no-split -buffer-name=buffer -start-insert buffer<cr>
-nnoremap <leader>y :Unite -no-split -buffer-name=yank history/yank<cr>
-nnoremap <leader>/ :Unite -toggle grep:.<cr>
+let g:unite_enable_start_insert = 1
+let g:unite_winheight = 10
+let g:unite_split_rule = 'botright'
+nnoremap [unite]f :Unite -buffer-name=files file_rec/async<cr>
+nnoremap [unite]b :UniteWithBufferDir -buffer-name=files file buffer<cr>
+nnoremap [unite]r :Unite -buffer-name=register register<cr>
+nnoremap [unite]/ :Unite -toggle grep:.<cr>
  
 nnoremap Y y$
 
