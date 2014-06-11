@@ -13,6 +13,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'danro/rename.vim'
 Plugin 'ScrollColors'
+Plugin 'chase/vim-ansible-yaml'
 
 call vundle#end()
 filetype plugin indent on
@@ -150,17 +151,27 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-q> <C-w>q
 
-nnoremap [unite] <Nop>
-nmap <leader>f [unite]
 
 " Unite settings
-let g:unite_enable_start_insert = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_selecta'])
+let g:unite_source_history_yank_enable = 1
 let g:unite_winheight = 10
-let g:unite_split_rule = 'botright'
-nnoremap [unite]f :Unite -buffer-name=files file_rec/async<cr>
-nnoremap [unite]b :UniteWithBufferDir -buffer-name=files file buffer<cr>
-nnoremap [unite]r :Unite -buffer-name=register register<cr>
-nnoremap [unite]/ :Unite -toggle grep:.<cr>
+nnoremap <leader>f :Unite -buffer-name=files -start-insert file_rec/async<cr>
+nnoremap <leader>F :UniteWithBufferDir -buffer-name=files -start-insert file<cr>
+nnoremap <leader>b :Unite -buffer-name=buffers -start-insert buffer<cr>
+nnoremap <leader>h :Unite -buffer-name=history history/yank<cr>
+nnoremap <leader>r :Unite -buffer-name=register register<cr>
+nnoremap <leader>/ :Unite -toggle grep:.<cr>
+nnoremap <leader>d :Explore<CR>
+
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+    let b:SuperTabDisabled=1
+    imap <buffer> <C-j> <Plug>(unite_select_next_line)
+    imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+    nmap <buffer> <C-c> <Plug>(unite_exit)
+endfunction
  
 nnoremap Y y$
 
