@@ -14,6 +14,7 @@ Plugin 'fatih/vim-go'
 Plugin 'danro/rename.vim'
 Plugin 'ScrollColors'
 Plugin 'chase/vim-ansible-yaml'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 filetype plugin indent on
@@ -151,6 +152,9 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-q> <C-w>q
 
+" Tagbar
+let g:tagbar_width = 50
+nnoremap <leader>t :TagbarToggle<CR>
 
 " Unite settings
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
