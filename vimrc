@@ -26,7 +26,6 @@ filetype plugin indent on
 set encoding=utf-8
 set t_Co=256
 syntax on
-colorscheme grb256
 set mouse=a
 set visualbell t_vb=
 set title
@@ -81,6 +80,9 @@ set undoreload=10000
 " VCS markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+" netrw
+let g:netrw_banner=0
+
 " ---------------------------------
 " Completion
 " ---------------------------------
@@ -120,7 +122,6 @@ call system("mkdir -p ~/.vim/tmp/undo")
 command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 
 let mapleader = ","
-inoremap jk <esc>
 nnoremap ; :
 
 " cd to current file's directory
@@ -156,11 +157,6 @@ noremap <C-q> <C-w>q
 let g:tagbar_width = 50
 nnoremap <leader>t :TagbarToggle<CR>
 
-" Unite settings
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_selecta'])
-let g:unite_source_history_yank_enable = 1
-let g:unite_winheight = 10
 nnoremap <leader>f :Unite -buffer-name=files -start-insert file_rec/async<cr>
 nnoremap <leader>F :UniteWithBufferDir -buffer-name=files -start-insert file<cr>
 nnoremap <leader>b :Unite -buffer-name=buffers -start-insert buffer<cr>
@@ -169,14 +165,6 @@ nnoremap <leader>r :Unite -buffer-name=register register<cr>
 nnoremap <leader>/ :Unite -toggle grep:.<cr>
 nnoremap <leader>d :Explore<CR>
 
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-    let b:SuperTabDisabled=1
-    imap <buffer> <C-j> <Plug>(unite_select_next_line)
-    imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-    nmap <buffer> <C-c> <Plug>(unite_exit)
-endfunction
- 
 nnoremap Y y$
 
 " insert mode completion
@@ -231,6 +219,18 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/]\.(git|hg|svn)|vendor|coverage$',
     \ 'file': '\v\.(eot|woff|svg|ttf|jpg|gif|png)$' }
 
+let g:unite_source_history_yank_enable = 1
+let g:unite_winheight = 10
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_selecta'])
+function! s:unite_settings()
+    let b:SuperTabDisabled=1
+    imap <buffer> <C-j> <Plug>(unite_select_next_line)
+    imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+    nmap <buffer> <C-c> <Plug>(unite_exit)
+endfunction
+ 
+
 " ---------------------------------
 " Auto Commands
 " ---------------------------------
@@ -265,6 +265,9 @@ augroup main
     autocmd FileType c setlocal omnifunc=ccomplete#Complete
     autocmd FileType java setlocal omnifunc=javacomplete#Complete completefunc=javacomplete#CompleteParamsInfo
     autocmd Filetype gitcommit setlocal tw=68 spell
+
+    " Plugins
+    autocmd FileType unite call s:unite_settings()
 augroup END
 
 " ---------------------------------
