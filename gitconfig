@@ -44,3 +44,5 @@
     new-commits    = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 [credential]
     helper = osxkeychain
+[heroku]
+	account = last

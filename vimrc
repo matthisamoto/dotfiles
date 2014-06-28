@@ -221,6 +221,8 @@ let g:ctrlp_custom_ignore = {
 
 let g:unite_source_history_yank_enable = 1
 let g:unite_winheight = 10
+let g:unite_source_grep_command = 'ack'
+let g:unite_source_rec_async_command = 'ack -f --nofilter'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 function! s:unite_settings()
@@ -252,6 +254,7 @@ augroup main
     autocmd BufRead *.god set filetype=ruby
     autocmd BufRead *.as set filetype=actionscript
     autocmd BufRead *.sls set filetype=yaml
+    autocmd BufRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufRead,BufNewFile *.go set filetype=go
 
     " Completion

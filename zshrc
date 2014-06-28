@@ -17,3 +17,5 @@ if [ -f $HOME/.zshrc.local ]; then
 fi
 
 for file ($ZSH/modules/**/*.zsh) source $file
+
+source $HOME/.lastguide
