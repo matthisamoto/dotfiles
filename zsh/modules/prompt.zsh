@@ -35,5 +35,5 @@ function git_prompt_info {
     echo -n "$(git_prompt_dirty)${ref#refs/heads/}"
 }
 
-PROMPT='\$ '
+PROMPT='[%c]\$ '
 RPROMPT=$'$(git_prompt_info)%{$reset_color%}'
