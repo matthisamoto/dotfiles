@@ -241,7 +241,6 @@ augroup main
     " Resize splits when window is resized
     autocmd VimResized * exe "normal! \<c-w>="
 
-    " Filetype
     autocmd BufRead *.css.php set filetype=css
     autocmd BufRead *.less set filetype=css
     autocmd BufRead,BufNewFile *.scss set filetype=scss
@@ -254,11 +253,10 @@ augroup main
     autocmd BufRead *.god set filetype=ruby
     autocmd BufRead *.as set filetype=actionscript
     autocmd BufRead *.sls set filetype=yaml
-    autocmd BufRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufRead *.yml set filetype=yaml
     autocmd BufRead,BufNewFile *.go set filetype=go
 
-    " Completion
-    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType javascript setlocal nocindent omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
@@ -268,6 +266,7 @@ augroup main
     autocmd FileType c setlocal omnifunc=ccomplete#Complete
     autocmd FileType java setlocal omnifunc=javacomplete#Complete completefunc=javacomplete#CompleteParamsInfo
     autocmd Filetype gitcommit setlocal tw=68 spell
+    autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
     " Plugins
     autocmd FileType unite call s:unite_settings()
