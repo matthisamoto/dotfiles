@@ -1,0 +1,55 @@
+#!/usr/bin/env bash -e
+
+usage() {
+    echo "usage:"
+    echo "  push BUCKET GEMFILE"
+    echo "  reindex BUCKET"
+}
+
+main() {
+    if [ $# -lt 1 ]; then
+        usage
+        exit 1
+    fi
+
+    local SUBCOMMAND="$1"
+    shift
+
+    if ! type "cmd_$SUBCOMMAND" >/dev/null 2>&1; then
+        echo "unknown subcommand: '$SUBCOMMAND'"
+        usage
+        exit 1
+    fi
+
+    cmd_$SUBCOMMAND "$@"
+}
+
+cmd_push() {
+    if [ $# -lt 2 ]; then
+        usage
+        exit 1
+    fi
+
+    local BUCKET=$1
+    local GEM=$2
+    local GEM_FILENAME=`basename $GEM`
+
+    aws s3 cp $GEM s3://$BUCKET/gems/$GEM_FILENAME --acl public-read && \
+    cmd_reindex $BUCKET
+}
+
+cmd_reindex() {
+    if [ $# -lt 1 ]; then
+        usage
+        exit 1
+    fi
+
+    local BUCKET=$1
+    local SYNC_PATH=`mktemp -dt s3gems`
+
+    aws s3 sync s3://$BUCKET/ $SYNC_PATH/ && \
+    gem generate_index --directory=$SYNC_PATH --update && \
+    aws s3 sync $SYNC_PATH/ s3://$BUCKET/ --acl public-read --delete
+}
+
+main "$@"
