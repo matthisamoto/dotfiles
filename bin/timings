@@ -1,0 +1,14 @@
+#!/bin/sh
+CURL_FORMAT=`cat <<EOF
+namelookup:\t%{time_namelookup}
+connect:\t%{time_connect}
+appconnect:\t%{time_appconnect}
+pretransfer:\t%{time_pretransfer}
+redirect:\t%{time_redirect}
+starttransfer:\t%{time_starttransfer}
+\t\t-------
+total:\t\t%{time_total}
+\n
+EOF`
+
+curl -w "$CURL_FORMAT" -o /dev/null -s "$@"
