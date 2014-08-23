@@ -5,16 +5,17 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Shougo/vimproc.vim'
+
 Plugin 'Shougo/unite.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go'
-Plugin 'danro/rename.vim'
-Plugin 'ScrollColors'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'chase/vim-ansible-yaml'
+Plugin 'danro/rename.vim'
+Plugin 'fatih/vim-go'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 filetype plugin indent on
@@ -30,6 +31,7 @@ set mouse=a
 set visualbell t_vb=
 set title
 set titleold=
+colorscheme molokai
 
 " Lines
 set number
@@ -157,12 +159,12 @@ noremap <C-q> <C-w>q
 let g:tagbar_width = 50
 nnoremap <leader>t :TagbarToggle<CR>
 
-nnoremap <leader>f :Unite -buffer-name=files -start-insert file_rec/async<cr>
-nnoremap <leader>F :UniteWithBufferDir -buffer-name=files -start-insert file<cr>
-nnoremap <leader>b :Unite -buffer-name=buffers -start-insert buffer<cr>
-nnoremap <leader>h :Unite -buffer-name=history history/yank<cr>
-nnoremap <leader>r :Unite -buffer-name=register register<cr>
-nnoremap <leader>/ :Unite -toggle grep:.<cr>
+nnoremap <leader>f :Unite -no-split -no-cursor-line -buffer-name=files -start-insert file_rec/async<cr>
+nnoremap <leader>F :UniteWithBufferDir -no-split -no-cursor-line -buffer-name=files -start-insert file<cr>
+nnoremap <leader>b :Unite -no-split -no-cursor-line -buffer-name=buffers -start-insert buffer<cr>
+nnoremap <leader>h :Unite -no-split -no-cursor-line -buffer-name=history history/yank<cr>
+nnoremap <leader>r :Unite -no-split -no-cursor-line -buffer-name=register register<cr>
+nnoremap <leader>/ :Unite -no-split -no-cursor-line -toggle grep:.<cr>
 nnoremap <leader>d :Explore<CR>
 
 nnoremap Y y$
@@ -220,7 +222,6 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(eot|woff|svg|ttf|jpg|gif|png)$' }
 
 let g:unite_source_history_yank_enable = 1
-let g:unite_winheight = 10
 let g:unite_source_grep_command = 'ack'
 let g:unite_source_rec_async_command = 'ack -f --nofilter'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
