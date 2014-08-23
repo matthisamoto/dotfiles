@@ -11,6 +11,7 @@ PATH=/usr/local/go/bin:$PATH                             # Go
 PATH=$HOME/Projects/bin:$PATH                            # My Go
 PATH=$HOME/.ansible/bin:$PATH                            # Ansible
 PATH=$HOME/.bin:$PATH                                    # My tools
+PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH # PostgreSQL
 
 if [ -f $HOME/.zshrc.local ]; then
     source $HOME/.zshrc.local
