@@ -1,5 +1,4 @@
-alias ..='cd ..'
-alias ...='cd ../..'
+unsetopt AUTO_CD
 
 alias l='ls -lah'
 alias ll='ls -lFh'
