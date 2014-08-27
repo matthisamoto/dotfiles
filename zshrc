@@ -1,6 +1,5 @@
 ZSH=$HOME/.zsh
 EDITOR=vim
-TERM=screen-256color
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH                # Machine
 PATH="$(brew --prefix python)/bin:$PATH"                 # Python

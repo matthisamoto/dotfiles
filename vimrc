@@ -11,11 +11,11 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'danro/rename.vim'
 Plugin 'fatih/vim-go'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'jonathanfilip/vim-lucius'
 
 call vundle#end()
 filetype plugin indent on
@@ -25,13 +25,13 @@ filetype plugin indent on
 " ---------------------------------
 
 set encoding=utf-8
-set t_Co=256
+set background=light
+colorscheme lucius
 syntax on
 set mouse=a
 set visualbell t_vb=
 set title
 set titleold=
-colorscheme molokai
 
 " Lines
 set number
