@@ -20,6 +20,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'jonathanfilip/vim-lucius'
+Plugin 'junegunn/vim-easy-align'
 
 call vundle#end()
 
