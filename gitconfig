@@ -1,29 +1,5 @@
-[core]
-    excludesfile = /Users/brettbuddin/.gitignore
-    editor       = vim
-[user]
-    name  = Brett Buddin
-    email = brett@buddin.us
-[github]
-    user = brettbuddin
-[color]
-    branch = auto
-    diff   = auto
-    status = auto
-    ui     = true
-[help]
-    autocorrect = 1
-[mergetool]
-    keepBackup = true
-[diff]
-    algorithm = patience
-[branch]
-    autosetuprebase = always
-[push]
-    default = current
 [alias]
-    ll             = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    ls             = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    log-detail     = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     short          = status -s
     stage          = add
     unstage        = reset HEAD
@@ -42,7 +18,30 @@
     edit-conflicts = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
     prune-remote   = !git remote | xargs -n 1 git remote prune
     new-commits    = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+[branch]
+    autosetuprebase = always
+[color]
+    branch = auto
+    diff   = auto
+    status = auto
+    ui     = true
+[core]
+    excludesfile = /Users/brett/.gitignore
+    editor       = vim
 [credential]
     helper = osxkeychain
+[diff]
+    algorithm = patience
+[github]
+    user = brettbuddin
+[help]
+    autocorrect = 1
 [heroku]
 	account = last
+[mergetool]
+    keepBackup = true
+[push]
+    default = current
+[user]
+    name  = Brett Buddin
+    email = brett@buddin.us
