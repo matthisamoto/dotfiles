@@ -1,6 +1,10 @@
 set nocompatible
 filetype off
 
+" ---------------------------------
+" Initialize Plugins
+" ---------------------------------
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -18,7 +22,6 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'jonathanfilip/vim-lucius'
 
 call vundle#end()
-filetype plugin indent on
 
 " ---------------------------------
 " UI
@@ -52,6 +55,7 @@ set hlsearch
 set incsearch
 
 " Indentation
+filetype plugin indent on
 set autoindent
 set preserveindent
 set shiftround
@@ -82,8 +86,9 @@ set undoreload=10000
 " VCS markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" netrw
+" Netrw
 let g:netrw_banner=0
+
 
 " ---------------------------------
 " Completion
@@ -134,21 +139,21 @@ nnoremap <F3> :set wrap!<cr>
 nnoremap <F4> :set number!<cr>
 nnoremap <F5> :set paste!<cr>
 
-" sane movement
+" Sane movement
 noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
 
-" indentation
+" Indentation
 vnoremap < <gv
 vnoremap > >gv
 
-" select all
+" Select all
 nnoremap vaa ggvGg_
 nnoremap Vaa ggVG
 
-" window movement
+" Window movement
 noremap <C-h> <C-w>h
 noremap <C-l> <C-w>l
 noremap <C-j> <C-w>j
@@ -169,38 +174,39 @@ nnoremap <leader>d :Explore<CR>
 
 nnoremap Y y$
 
-" insert mode completion
+" Insert mode completion
 inoremap <C-L> <C-X><C-L>
 inoremap <C-F> <C-X><C-F>
 inoremap <C-O> <C-X><C-O>
 
-" formatting
+" Formatting
 nnoremap Q gqip
 vnoremap Q gq
 
-" sane regexp for search
+" Sane regexp for search
 nnoremap / /\v
 vnoremap / /\v
 
-" keep the cursor in place while joining lines
+" Keep the cursor in place while joining lines
 nnoremap J mzJ`z
 
-" keep search matches in the middle of window
+" Keep search matches in the middle of window
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Save even if we forgot to open the file with sudo
 cmap w!! %!sudo tee > /dev/null %
 
+
 " ---------------------------------
 " Plugins
 " ---------------------------------
+
+" Go
 let go_highlight_structs = 0
 let go_highlight_methods = 0
 
-let g:fuf_file_exclude = '\v\.DS_Store|\.bak|\.swp'
-let g:statline_show_encoding = 0
-
+" Syntastic
 let g:syntastic_enable_signs = 1
 let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_java_javac_config_file_enabled = 1
@@ -214,13 +220,7 @@ let g:syntastic_mode_map = {
     \ 'active_filetypes': [],
     \ 'passive_filetypes': ['html'] }
 
-let g:ctrlp_by_filename = 1
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/]\.(git|hg|svn)|vendor|coverage$',
-    \ 'file': '\v\.(eot|woff|svg|ttf|jpg|gif|png)$' }
-
+" Unite
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_grep_command = 'ack'
 let g:unite_source_rec_async_command = 'ack -f --nofilter'
@@ -272,6 +272,7 @@ augroup main
     " Plugins
     autocmd FileType unite call s:unite_settings()
 augroup END
+
 
 " ---------------------------------
 " OS X Stuff
