@@ -2,3 +2,4 @@
 --ignore-dir=coverage
 --ignore-dir=vendor
 --ignore-dir=node_modules
+--ignore-dir=log
