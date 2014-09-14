@@ -1,6 +1,5 @@
 [alias]
     amend          = commit --amend -C HEAD
-    info           = status -sb
     unadd          = reset HEAD
     diff-added     = diff --cached
     stat           = diff --stat -r
@@ -45,3 +44,6 @@
     smudge = git-media-smudge %f
 [format]
     pretty = "format:%Cblue%h%Creset %Creset%Cgreen%cn, %cr%Creset : %s%Creset%C(red)%d%Creset"
+[status]
+    short  = true
+    branch = true
