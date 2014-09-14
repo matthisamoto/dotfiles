@@ -16,7 +16,7 @@ PS1="%n@%m:%~%# "
 function git_prompt_dirty {
     local git_status=''
 
-    git_status=$(command git status -s 2>/dev/null | tail -n1)
+    git_status=$(command git status 2>/dev/null | grep -v -e ^# | tail -n1)
     if [[ -n $git_status ]]
     then
         echo "%{$fg[yellow]%}"
