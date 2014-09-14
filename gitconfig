@@ -1,24 +1,18 @@
 [alias]
     amend          = commit --amend -C HEAD
-    log-detail     = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    short          = status -s
-    stage          = add
-    unstage        = reset HEAD
-    staged         = diff --cached
-    unstaged       = diff
+    info           = status -sb
+    unadd          = reset HEAD
+    diff-added     = diff --cached
     stat           = diff --stat -r
-    undo           = reset --soft HEAD^
-    track          = checkout -t
+    undo-commit    = reset --soft HEAD^
     prep           = rebase -i @{upstream}
-    up             = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
 
-    human          = name-rev --name-only
-    ours           = '!f() { git checkout --ours $@ && git add $@; }; f'
-    theirs         = '!f() { git checkout --theirs $@ && git add $@; }; f'
-    conflicts      = "!f() { git ls-files -u | awk '{print $4}' | sort -u; }; f"
-    edit-conflicts = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
-    prune-remote   = !git remote | xargs -n 1 git remote prune
-    new-commits    = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    human           = name-rev --name-only
+    checkout-ours   = '!f() { git checkout --ours $@ && git add $@; }; f'
+    checkout-theirs = '!f() { git checkout --theirs $@ && git add $@; }; f'
+    conflicts       = "!f() { git ls-files -u | awk '{print $4}' | sort -u; }; f"
+    edit-conflicts  = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
+    new-commits     = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 [branch]
     autosetuprebase = always
 [color]
@@ -49,3 +43,5 @@
 [filter "media"]
     clean = git-media-clean %f
     smudge = git-media-smudge %f
+[format]
+    pretty = "format:%Cblue%h%Creset %Creset%Cgreen%cn, %cr%Creset : %s%Creset%C(red)%d%Creset"
