@@ -12,6 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/neomru.vim'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'danro/rename.vim'
 Plugin 'fatih/vim-go'
@@ -19,8 +20,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'jonathanfilip/vim-lucius'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'flazz/vim-colorschemes'
 
 call vundle#end()
 
@@ -30,7 +31,7 @@ call vundle#end()
 
 set encoding=utf-8
 set background=light
-colorscheme lucius
+colorscheme tir_black
 syntax on
 set mouse=a
 set visualbell t_vb=
@@ -165,12 +166,12 @@ noremap <C-q> <C-w>q
 let g:tagbar_width = 50
 nnoremap <leader>t :TagbarToggle<CR>
 
-nnoremap <leader>f :Unite -no-split -no-cursor-line -buffer-name=files -start-insert file_rec/async<cr>
-nnoremap <leader>F :UniteWithBufferDir -no-split -no-cursor-line -buffer-name=files -start-insert file<cr>
-nnoremap <leader>b :Unite -no-split -no-cursor-line -buffer-name=buffers -start-insert buffer<cr>
-nnoremap <leader>h :Unite -no-split -no-cursor-line -buffer-name=history history/yank<cr>
-nnoremap <leader>r :Unite -no-split -no-cursor-line -buffer-name=register register<cr>
-nnoremap <leader>/ :Unite -no-split -no-cursor-line -toggle grep:.<cr>
+nnoremap <leader>f :Unite -start-insert -auto-resize -buffer-name=files file_rec/async<cr>
+nnoremap <leader>F :UniteWithBufferDir -start-insert -auto-resize -buffer-name=files file<cr>
+nnoremap <leader>b :Unite -start-insert -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <leader>h :Unite -start-insert -auto-resize -buffer-name=history history/yank<cr>
+nnoremap <leader>r :Unite -start-insert -auto-resize -buffer-name=register register<cr>
+nnoremap <leader>/ :Unite -start-insert -auto-resize -toggle grep:.<cr>
 nnoremap <leader>d :Explore<CR>
 
 nnoremap Y y$
@@ -226,7 +227,7 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_source_grep_command = 'ack'
 let g:unite_source_rec_async_command = 'ack -f --nofilter'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_selecta'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 function! s:unite_settings()
     let b:SuperTabDisabled=1
     imap <buffer> <C-j> <Plug>(unite_select_next_line)

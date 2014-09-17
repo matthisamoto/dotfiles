@@ -1,5 +1,5 @@
 [alias]
-    amend          = commit --amend -C HEAD
+    amend          = commit --amend
     unadd          = reset HEAD
     diff-added     = diff --cached
     stat           = diff --stat -r
@@ -31,11 +31,11 @@
 [help]
     autocorrect = 1
 [heroku]
-	account = last
+	  account = last
 [mergetool]
     keepBackup = true
 [push]
-    default = current
+    default = simple
 [user]
     name  = Brett Buddin
     email = brett@buddin.us
