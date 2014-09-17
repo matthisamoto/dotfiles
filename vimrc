@@ -22,6 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-markdown'
 
 call vundle#end()
 
@@ -250,9 +251,9 @@ augroup main
     autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
     autocmd BufRead *.js.php set filetype=javascript
     autocmd BufRead *.jsx set filetype=javascript
-    autocmd BufRead *.md set filetype=mkd
-    autocmd BufRead *.mkd set filetype=mkd
-    autocmd BufRead *.markdown set filetype=mkd
+    autocmd BufRead *.md set filetype=markdown
+    autocmd BufRead *.mkd set filetype=markdown
+    autocmd BufRead *.markdown set filetype=markdown
     autocmd BufRead *.god set filetype=ruby
     autocmd BufRead *.as set filetype=actionscript
     autocmd BufRead *.sls set filetype=yaml
