@@ -218,7 +218,7 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_include_dirs = ['../lib', 'lib']
 
-let g:syntastic_mode_map = { 
+let g:syntastic_mode_map = {
     \ 'mode': 'active',
     \ 'active_filetypes': [],
     \ 'passive_filetypes': ['html'] }
@@ -235,13 +235,16 @@ function! s:unite_settings()
     imap <buffer> <C-k> <Plug>(unite_select_previous_line)
     nmap <buffer> <C-c> <Plug>(unite_exit)
 endfunction
- 
+
 
 " ---------------------------------
 " Auto Commands
 " ---------------------------------
 
 augroup main
+    " Auto-trim whitespace at the end of lines
+    autocmd BufWritePre * :%s/\s\+$//e
+
     " Resize splits when window is resized
     autocmd VimResized * exe "normal! \<c-w>="
 
