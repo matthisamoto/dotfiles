@@ -35,7 +35,7 @@
 [mergetool]
     keepBackup = true
 [push]
-    default = simple
+    default = current
 [user]
     name  = Brett Buddin
     email = brett@buddin.us
