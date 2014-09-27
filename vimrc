@@ -23,6 +23,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-markdown'
+Plugin 'vim-scripts/greplace.vim'
 
 call vundle#end()
 
