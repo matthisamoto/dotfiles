@@ -168,12 +168,12 @@ noremap <C-q> <C-w>q
 let g:tagbar_width = 50
 nnoremap <leader>t :TagbarToggle<CR>
 
-nnoremap <leader>f :Unite -start-insert -auto-resize -buffer-name=files file_rec/async<cr>
-nnoremap <leader>F :UniteWithBufferDir -start-insert -auto-resize -buffer-name=files file<cr>
-nnoremap <leader>b :Unite -start-insert -auto-resize -buffer-name=buffers buffer<cr>
-nnoremap <leader>h :Unite -start-insert -auto-resize -buffer-name=history history/yank<cr>
-nnoremap <leader>r :Unite -start-insert -auto-resize -buffer-name=register register<cr>
-nnoremap <leader>/ :Unite -start-insert -auto-resize -toggle grep:.<cr>
+nnoremap <leader>f :Unite -start-insert -auto-resize -buffer-name=files file_rec/async<CR>
+nnoremap <leader>F :UniteWithBufferDir -start-insert -auto-resize -buffer-name=relative-files file<CR>
+nnoremap <leader>b :Unite -start-insert -auto-resize -buffer-name=buffers buffer<CR>
+nnoremap <leader>h :Unite -start-insert -auto-resize -buffer-name=history history/yank<CR>
+nnoremap <leader>r :Unite -start-insert -auto-resize -buffer-name=register register<CR>
+nnoremap <leader>/ :Unite -start-insert -auto-resize -toggle grep:.<CR>
 nnoremap <leader>d :Explore<CR>
 
 nnoremap Y y$
@@ -227,7 +227,8 @@ let g:syntastic_mode_map = {
 " Unite
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_grep_command = 'ack'
-let g:unite_source_rec_async_command = 'ack -f --nofilter'
+let g:unite_source_grep_default_opts = '-i --noheading --nocolor --known-types --with-filename'
+let g:unite_source_rec_async_command = 'ack -f --nofilter --nocolor'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 function! s:unite_settings()
