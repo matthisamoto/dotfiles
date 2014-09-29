@@ -10,20 +10,18 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/neomru.vim'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'danro/rename.vim'
 Plugin 'fatih/vim-go'
-Plugin 'majutsushi/tagbar'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-markdown'
-Plugin 'vim-scripts/greplace.vim'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 
@@ -174,7 +172,7 @@ nnoremap <leader>b :Unite -start-insert -auto-resize -buffer-name=buffers buffer
 nnoremap <leader>h :Unite -start-insert -auto-resize -buffer-name=history history/yank<CR>
 nnoremap <leader>r :Unite -start-insert -auto-resize -buffer-name=register register<CR>
 nnoremap <leader>/ :Unite -start-insert -auto-resize -toggle grep:.<CR>
-nnoremap <leader>d :Explore<CR>
+nnoremap <leader>e :Explore<CR>
 
 nnoremap Y y$
 
