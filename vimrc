@@ -25,6 +25,7 @@ Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 
+
 " ---------------------------------
 " UI
 " ---------------------------------
@@ -37,9 +38,10 @@ set mouse=a
 set visualbell t_vb=
 set title
 set titleold=
+set go+=c
 
 " Lines
-set number
+set nonumber
 set nolist
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set noshowcmd
@@ -136,10 +138,10 @@ nnoremap ; :
 " cd to current file's directory
 nnoremap <leader>cd %:p:h
 
-nnoremap <F2> :set hlsearch!<cr>
-nnoremap <F3> :set wrap!<cr>
-nnoremap <F4> :set number!<cr>
-nnoremap <F5> :set paste!<cr>
+nnoremap <F2> :set hlsearch!<CR>
+nnoremap <F3> :set wrap!<CR>
+nnoremap <F4> :set number!<CR>
+nnoremap <F5> :set paste!<CR>
 
 " Sane movement
 noremap j gj
@@ -162,16 +164,14 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-q> <C-w>q
 
-" Tagbar
-let g:tagbar_width = 50
-nnoremap <leader>t :TagbarToggle<CR>
-
+" Unite
 nnoremap <leader>f :Unite -start-insert -auto-resize -buffer-name=files file_rec/async<CR>
 nnoremap <leader>F :UniteWithBufferDir -start-insert -auto-resize -buffer-name=relative-files file<CR>
 nnoremap <leader>b :Unite -start-insert -auto-resize -buffer-name=buffers buffer<CR>
 nnoremap <leader>h :Unite -start-insert -auto-resize -buffer-name=history history/yank<CR>
 nnoremap <leader>r :Unite -start-insert -auto-resize -buffer-name=register register<CR>
 nnoremap <leader>/ :Unite -start-insert -auto-resize -toggle grep:.<CR>
+
 nnoremap <leader>e :Explore<CR>
 
 nnoremap Y y$
@@ -230,7 +230,6 @@ let g:unite_source_rec_async_command = 'ack -f --nofilter --nocolor'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 function! s:unite_settings()
-    let b:SuperTabDisabled=1
     imap <buffer> <C-j> <Plug>(unite_select_next_line)
     imap <buffer> <C-k> <Plug>(unite_select_previous_line)
     nmap <buffer> <C-c> <Plug>(unite_exit)
