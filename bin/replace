@@ -1,0 +1,6 @@
+#!/usr/bin/env bash -eu
+
+pattern=$1
+replacement=$2
+
+perl -i -p -e"s/${pattern}/${replacement}/g" $(ack -l $pattern)
