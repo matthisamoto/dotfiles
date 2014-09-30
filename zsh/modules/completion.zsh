@@ -1,6 +1,6 @@
 fpath=($ZSH/completion $fpath)
 autoload -U compinit
-compinit -i                                                                      
+compinit -i
 
 zmodload -i zsh/complist
 
@@ -36,7 +36,6 @@ zstyle ':completion:*:scp:*' tag-order files users 'hosts:-host hosts:-domain:do
 zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
 zstyle '*' single-ignored show
 
-setopt AUTO_CD
 setopt CORRECT
 setopt COMPLETE_IN_WORD
 setopt ALWAYS_TO_END
