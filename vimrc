@@ -39,9 +39,10 @@ set visualbell t_vb=
 set title
 set titleold=
 set go+=c
+set shortmess+=I
 
 " Lines
-set nonumber
+set number
 set nolist
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set noshowcmd
@@ -93,6 +94,9 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Netrw
 let g:netrw_banner=0
 
+" Spelling
+set spelllang=en_us
+
 
 " ---------------------------------
 " Completion
@@ -117,6 +121,7 @@ set complete=.,t
 " ---------------------------------
 
 set hidden
+set autoread
 set noswapfile
 set dir=~/.vim/tmp/swap/
 set backupdir=~/.vim/tmp/backup/
