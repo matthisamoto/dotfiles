@@ -228,10 +228,12 @@ let g:syntastic_mode_map = {
     \ 'passive_filetypes': ['html'] }
 
 " Unite
+let g:unite_source_file_rec_max_cache_files = 0
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_grep_command = 'ack'
 let g:unite_source_grep_default_opts = '-i --noheading --nocolor --known-types --with-filename'
 let g:unite_source_rec_async_command = 'ack -f --nofilter --nocolor'
+call unite#custom#source('file_mru,file_rec,file_rec/async', 'max_candidates', 0)
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 function! s:unite_settings()
