@@ -278,7 +278,9 @@ augroup main
     autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP iskeyword-=- keywordprg=pman
     autocmd FileType c setlocal omnifunc=ccomplete#Complete
     autocmd FileType java setlocal omnifunc=javacomplete#Complete completefunc=javacomplete#CompleteParamsInfo
-    autocmd Filetype gitcommit setlocal tw=68 spell
+    autocmd Filetype gitcommit setlocal textwidth=72 spell
+    autocmd Filetype text setlocal textwidth=80 spell
+    autocmd Filetype markdown setlocal textwidth=80 spell
     autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
     " Plugins
