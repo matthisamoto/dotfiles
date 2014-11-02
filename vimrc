@@ -223,9 +223,9 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_include_dirs = ['../lib', 'lib']
 
 let g:syntastic_mode_map = {
-    \ 'mode': 'active',
-    \ 'active_filetypes': [],
-    \ 'passive_filetypes': ['html'] }
+      \ 'mode': 'active',
+      \ 'active_filetypes': [],
+      \ 'passive_filetypes': ['html'] }
 
 " Unite
 let g:unite_source_file_rec_max_cache_files = 0
@@ -237,9 +237,9 @@ call unite#custom#source('file_mru,file_rec,file_rec/async', 'max_candidates', 0
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 function! s:unite_settings()
-    imap <buffer> <C-j> <Plug>(unite_select_next_line)
-    imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-    nmap <buffer> <C-c> <Plug>(unite_exit)
+  imap <buffer> <C-j> <Plug>(unite_select_next_line)
+  imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+  nmap <buffer> <C-c> <Plug>(unite_exit)
 endfunction
 
 
@@ -248,43 +248,43 @@ endfunction
 " ---------------------------------
 
 augroup main
-    " Auto-trim whitespace at the end of lines
-    autocmd BufWritePre * :%s/\s\+$//e
+  " Auto-trim whitespace at the end of lines
+  autocmd BufWritePre * :%s/\s\+$//e
 
-    " Resize splits when window is resized
-    autocmd VimResized * exe "normal! \<c-w>="
+  " Resize splits when window is resized
+  autocmd VimResized * exe "normal! \<c-w>="
 
-    autocmd BufRead *.css.php set filetype=css
-    autocmd BufRead *.less set filetype=css
-    autocmd BufRead,BufNewFile *.scss set filetype=scss
-    autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-    autocmd BufRead *.js.php set filetype=javascript
-    autocmd BufRead *.jsx set filetype=javascript
-    autocmd BufRead *.md set filetype=markdown
-    autocmd BufRead *.mkd set filetype=markdown
-    autocmd BufRead *.markdown set filetype=markdown
-    autocmd BufRead *.god set filetype=ruby
-    autocmd BufRead *.as set filetype=actionscript
-    autocmd BufRead *.sls set filetype=yaml
-    autocmd BufRead *.yml set filetype=yaml
-    autocmd BufRead,BufNewFile *.go set filetype=go
+  autocmd BufRead *.css.php set filetype=css
+  autocmd BufRead *.less set filetype=css
+  autocmd BufRead,BufNewFile *.scss set filetype=scss
+  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+  autocmd BufRead *.js.php set filetype=javascript
+  autocmd BufRead *.jsx set filetype=javascript
+  autocmd BufRead *.md set filetype=markdown
+  autocmd BufRead *.mkd set filetype=markdown
+  autocmd BufRead *.markdown set filetype=markdown
+  autocmd BufRead *.god set filetype=ruby
+  autocmd BufRead *.as set filetype=actionscript
+  autocmd BufRead *.sls set filetype=yaml
+  autocmd BufRead *.yml set filetype=yaml
+  autocmd BufRead,BufNewFile *.go set filetype=go
 
-    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType javascript setlocal nocindent omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP iskeyword-=- keywordprg=pman
-    autocmd FileType c setlocal omnifunc=ccomplete#Complete
-    autocmd FileType java setlocal omnifunc=javacomplete#Complete completefunc=javacomplete#CompleteParamsInfo
-    autocmd Filetype gitcommit setlocal textwidth=72 spell
-    autocmd Filetype text setlocal textwidth=80 spell
-    autocmd Filetype markdown setlocal textwidth=80 spell
-    autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType javascript setlocal nocindent omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP iskeyword-=- keywordprg=pman
+  autocmd FileType c setlocal omnifunc=ccomplete#Complete
+  autocmd FileType java setlocal omnifunc=javacomplete#Complete completefunc=javacomplete#CompleteParamsInfo
+  autocmd Filetype gitcommit setlocal textwidth=72 spell
+  autocmd Filetype text setlocal textwidth=80 spell
+  autocmd Filetype markdown setlocal textwidth=80 spell
+  autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
-    " Plugins
-    autocmd FileType unite call s:unite_settings()
+  " Plugins
+  autocmd FileType unite call s:unite_settings()
 augroup END
 
 
@@ -294,12 +294,12 @@ augroup END
 
 if system('uname') =~ 'Darwin'
   let $PATH = $HOME .
-    \ '/usr/local/bin:/usr/local/sbin:' .
-    \ '/usr/pkg/bin:' .
-    \ '/opt/local/bin:/opt/local/sbin:' .
-    \ $PATH
+        \ '/usr/local/bin:/usr/local/sbin:' .
+        \ '/usr/pkg/bin:' .
+        \ '/opt/local/bin:/opt/local/sbin:' .
+        \ $PATH
 endif
 
 if filereadable(expand($HOME . "/.vimrc.local"))
-    source $HOME/.vimrc.local
+  source $HOME/.vimrc.local
 endif
