@@ -222,6 +222,8 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_include_dirs = ['../lib', 'lib']
 
+let g:syntastic_ruby_mri_exec = '$HOME/.rbenv/shims/ruby'
+
 let g:syntastic_mode_map = {
       \ 'mode': 'active',
       \ 'active_filetypes': [],
