@@ -13,6 +13,10 @@ LISTMAX=0
 
 PS1="%n@%m:%~%# "
 
+function stopped_jobs {
+    jobs -s | wc -l | sed -e "s/ //g"
+}
+
 function git_prompt_dirty {
     local git_status=''
 
@@ -35,5 +39,5 @@ function git_prompt_info {
     echo -n "$(git_prompt_dirty)${ref#refs/heads/}"
 }
 
-PROMPT='[%c]\$ '
+PROMPT='%{$fg[white]%}[%{$fg[cyan]%}%c%{$fg[white]%}:%{$fg[yellow]%}$(stopped_jobs)%{$fg[white]%}]\$ %{$reset_color%}'
 RPROMPT=$'$(git_prompt_info)%{$reset_color%}'
