@@ -22,7 +22,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'chriskempson/tomorrow-theme'
 
 call vundle#end()
 
@@ -33,7 +32,7 @@ call vundle#end()
 
 set encoding=utf-8
 set background=light
-colorscheme Tomorrow-Night
+colorscheme tir_black
 syntax on
 set mouse=a
 set visualbell t_vb=
