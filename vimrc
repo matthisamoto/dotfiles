@@ -9,9 +9,12 @@ call vundle#begin()
 
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'danro/rename.vim'
+Plugin 'fatih/vim-go'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
