@@ -21,15 +21,15 @@ call vundle#end()
 
 let g:netrw_banner=0
 let g:syntastic_enable_signs=1
-let g:syntastic_ruby_mri_exec="$HOME/.rbenv/shims/ruby"
+let g:syntastic_ruby_mri_exec='$HOME/.rbenv/shims/ruby'
 let g:unite_source_file_rec_max_cache_files=0
 let g:unite_source_grep_command='ack'
-let g:unite_source_grep_default_opts="-i --noheading --nocolor --known-types --with-filename"
-let g:unite_source_rec_async_command="ack -f --nofilter --nocolor"
+let g:unite_source_grep_default_opts='-i --noheading --nocolor --known-types --with-filename'
+let g:unite_source_rec_async_command='ack -f --nofilter --nocolor'
 
-call unite#custom#source("file_mru,file_rec,file_rec/async", "max_candidates", 0)
-call unite#filters#matcher_default#use(["matcher_fuzzy"])
-call unite#filters#sorter_default#use(["sorter_rank"])
+call unite#custom#source('file_mru,file_rec,file_rec/async', 'max_candidates', 0)
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 
 function! s:unite_settings()
   nmap <buffer> <C-c> <Plug>(unite_exit)
@@ -94,7 +94,7 @@ set nowrap
 " Mappings
 " ---------------------------------
 
-let mapleader = ","
+let mapleader = ','
 nnoremap ; :
 
 " Unite
@@ -134,7 +134,7 @@ vnoremap / /\v
 
 augroup main
   autocmd BufWritePre * :%s/\s\+$//e
-  autocmd VimResized * exe "normal! \<c-w>="
+  autocmd VimResized * exe 'normal! \<c-w>='
   autocmd FileType unite call s:unite_settings()
 augroup END
 
@@ -152,10 +152,10 @@ augroup filetypes
   autocmd Filetype markdown setlocal spell
 augroup END
 
-if filereadable(expand($HOME . "/.vimrc.local"))
+if filereadable(expand($HOME . '/.vimrc.local'))
   source $HOME/.vimrc.local
 endif
 
-call system("mkdir -p ~/.vim/tmp/swap")
-call system("mkdir -p ~/.vim/tmp/backup")
-call system("mkdir -p ~/.vim/tmp/undo")
+call system('mkdir -p ~/.vim/tmp/swap')
+call system('mkdir -p ~/.vim/tmp/backup')
+call system('mkdir -p ~/.vim/tmp/undo')
