@@ -51,6 +51,7 @@ set autoread
 set backspace=indent,eol,start
 set backupdir=~/.vim/tmp/backup/
 set breakat=\ |@-+;:,./?^I
+set cursorline
 set dir=~/.vim/tmp/swap/
 set encoding=utf-8
 set expandtab
@@ -83,6 +84,7 @@ set undodir=~/.vim/tmp/undo/
 set undofile
 set undoreload=10000
 set whichwrap=<,>,h,l
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg,*.fla,*.swf,*.o,*.obj,*.exe,*.dll,*.manifest,*.pyc,*.class,*.sw?,.DS_Store
 set wildmenu
 
 set noerrorbells
