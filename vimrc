@@ -42,12 +42,13 @@ endfunction
 " Options
 " ---------------------------------
 
-colorscheme tir_black
+colorscheme solarized
 filetype plugin indent on
 syntax on
 
 set autoindent
 set autoread
+set background=light
 set backspace=indent,eol,start
 set backupdir=~/.vim/tmp/backup/
 set breakat=\ |@-+;:,./?^I
