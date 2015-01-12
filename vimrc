@@ -4,23 +4,9 @@ set nocompatible
 " Plugins
 " ---------------------------------
 
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'danro/rename.vim'
-Plugin 'fatih/vim-go'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-Plugin 'vim-ruby/vim-ruby'
-
-call vundle#end()
+if filereadable(expand($HOME . '/.vimrc.bundles'))
+  source $HOME/.vimrc.bundles
+endif
 
 let g:netrw_banner=0
 let g:syntastic_enable_signs=1
