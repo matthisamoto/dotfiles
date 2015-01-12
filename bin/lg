@@ -1,7 +1,0 @@
-#!/usr/bin/env bash -eu
-
-current=$(pwd)
-local_base="$LAST_SRC_PATH/"
-relative=${current#$local_base}
-
-ssh last -t "bash -lc \"cd src/$relative && $@\""
