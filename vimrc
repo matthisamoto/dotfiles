@@ -9,7 +9,15 @@ if filereadable(expand($HOME . '/.vimrc.bundles'))
 endif
 
 let g:netrw_banner=0
+
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+
 let g:syntastic_enable_signs=1
+let g:syntastic_ruby_mri_exec=expand($HOME . '/.rvm/rubies/ruby-2.1.5/bin/ruby')
+
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
+let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor --nogroup -g ""'
 
 " ---------------------------------
 " Options
@@ -21,7 +29,7 @@ syntax on
 
 set autoindent
 set autoread
-set background=dark
+set background=light
 set backspace=indent,eol,start
 set backupdir=~/.vim/tmp/backup/
 set breakat=\ |@-+;:,./?^I
@@ -74,10 +82,15 @@ set nowrap
 " ---------------------------------
 
 let mapleader = ','
-nnoremap ; :
 
+" File and buffer navigation
+noremap <leader>x :Explore<CR>
 noremap <leader>f :CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<CR>
+
+" Toggle Location and Quickfix Lists
+nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 
 " Sane movement
 noremap j gj
@@ -106,11 +119,21 @@ vnoremap / /\v
 
 
 " ---------------------------------
+" Commands
+" ---------------------------------
+
+command! TrimWhitespace call TrimWhitespace()
+
+function! TrimWhitespace()
+  %s/\s\+$//e
+endfunction
+
+
+" ---------------------------------
 " Auto Commands
 " ---------------------------------
 
 augroup main
-  autocmd BufWritePre * :%s/\s\+$//e
   autocmd VimResized * exe 'normal! \<c-w>='
 augroup END
 

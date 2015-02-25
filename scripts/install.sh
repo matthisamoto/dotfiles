@@ -48,4 +48,3 @@ if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
 fi
 
 vim -u $HOME/.vimrc.bundles +PluginInstall +PluginClean! +qa
-cd $HOME/.vim/bundle/vimproc.vim && make

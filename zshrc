@@ -3,8 +3,6 @@ EDITOR=vim
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH                       # Machine
 PATH="$(brew --prefix python)/bin:$PATH"                        # Python
-#PATH="$(brew --prefix ruby)/bin:$PATH"                         # Ruby
-PATH="$PATH:$HOME/.rvm/bin"                                     # Ruby
 PATH="$(brew --prefix heroku)/bin:$PATH"                        # Heroku
 PATH="$(brew --prefix go)/bin:$PATH"                            # Go
 PATH=$HOME/Projects/bin:$PATH                                   # My Go
