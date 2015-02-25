@@ -36,8 +36,9 @@ function git_prompt_info {
     || ref=$(command git rev-parse --short HEAD 2> /dev/null) \
     || return
 
-    echo -n "$(git_prompt_dirty)${ref#refs/heads/}"
+    echo -n " on $(git_prompt_dirty)${ref#refs/heads/}"
 }
 
-PROMPT='[%{$fg[cyan]%}%c%{$reset_color%}:$(stopped_jobs)]\$ %{$reset_color%}'
-RPROMPT=$'$(git_prompt_info)%{$reset_color%}'
+PROMPT='($(stopped_jobs))(%{$fg[cyan]%}%c%{$reset_color%}$(git_prompt_info)%{$reset_color%})\$ %{$reset_color%}'
+RPROMPT=$''
+SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
