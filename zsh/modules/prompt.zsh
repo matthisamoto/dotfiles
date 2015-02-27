@@ -13,32 +13,41 @@ LISTMAX=0
 
 PS1="%n@%m:%~%# "
 
-function stopped_jobs {
+function num_stopped_jobs {
     jobs -s | wc -l | sed -e "s/ //g"
 }
 
-function git_prompt_dirty {
+function prompt_stopped_jobs {
+  let num_stopped_jobs=$(num_stopped_jobs)
+
+  if [ $num_stopped_jobs != "0" ]
+  then
+    echo -n "($num_stopped_jobs)"
+  fi
+}
+
+function prompt_git_prompt_dirty {
     local git_status=''
 
     git_status=$(command git status 2>/dev/null | grep -v -e '^#' | tail -n1)
     if [[ -n $git_status ]]
     then
-        echo "%{$fg[yellow]%}"
+        echo -n "%{$fg[yellow]%}"
     else
-        echo "%{$fg[green]%}"
+        echo -n "%{$fg[green]%}"
     fi
 }
 
-function git_prompt_info {
+function prompt_git_prompt_info {
     local ref=''
 
     ref=$(command git symbolic-ref HEAD 2> /dev/null) \
     || ref=$(command git rev-parse --short HEAD 2> /dev/null) \
     || return
 
-    echo -n " on $(git_prompt_dirty)${ref#refs/heads/}"
+    echo -n " on $(prompt_git_prompt_dirty)${ref#refs/heads/}"
 }
 
-PROMPT='($(stopped_jobs))(%{$fg[cyan]%}%c%{$reset_color%}$(git_prompt_info)%{$reset_color%})\$ %{$reset_color%}'
+PROMPT='$(prompt_stopped_jobs)(%{$fg[cyan]%}%c%{$reset_color%}$(prompt_git_prompt_info)%{$reset_color%})\$ %{$reset_color%}'
 RPROMPT=$''
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '

@@ -1,4 +1,5 @@
 set nocompatible
+autocmd!
 
 " ---------------------------------
 " Plugins
@@ -98,6 +99,12 @@ noremap k gk
 noremap gj j
 noremap gk k
 
+" Pane movement
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
 
@@ -134,10 +141,14 @@ endfunction
 " ---------------------------------
 
 augroup main
+  autocmd!
+
   autocmd VimResized * exe 'normal! \<c-w>='
 augroup END
 
 augroup filetypes
+  autocmd!
+
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
   autocmd BufRead,BufNewFile *.go set filetype=go
   autocmd BufRead,BufNewFile *.md set filetype=markdown
@@ -155,6 +166,14 @@ if filereadable(expand($HOME . '/.vimrc.local'))
   source $HOME/.vimrc.local
 endif
 
-call system('mkdir -p ~/.vim/tmp/swap')
-call system('mkdir -p ~/.vim/tmp/backup')
-call system('mkdir -p ~/.vim/tmp/undo')
+if !isdirectory('~/.vim/tmp/swap')
+  call mkdir('~/.vim/tmp/swap', 'p')
+endif
+
+if !isdirectory('~/.vim/tmp/backup')
+  call mkdir('~/.vim/tmp/backup', 'p')
+endif
+
+if !isdirectory('~/.vim/tmp/undo')
+  call mkdir('~/.vim/tmp/undo', 'p')
+endif
