@@ -9,8 +9,6 @@ if filereadable(expand($HOME . '/.vimrc.bundles'))
   source $HOME/.vimrc.bundles
 endif
 
-let g:netrw_banner=0
-
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
 
@@ -85,7 +83,6 @@ set nowrap
 let mapleader = ','
 
 " File and buffer navigation
-noremap <leader>x :Explore<CR>
 noremap <leader>f :CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<CR>
 
