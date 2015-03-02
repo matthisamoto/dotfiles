@@ -5,15 +5,15 @@ autocmd!
 " Plugins
 " ---------------------------------
 
-if filereadable(expand($HOME . '/.vimrc.bundles'))
-  source $HOME/.vimrc.bundles
+if filereadable(glob('~/.vimrc.bundles'))
+  source ~/.vimrc.bundles
 endif
 
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
 
 let g:syntastic_enable_signs=1
-let g:syntastic_ruby_mri_exec=expand($HOME . '/.rvm/rubies/ruby-2.1.5/bin/ruby')
+let g:syntastic_ruby_mri_exec=expand('~/.rvm/rubies/ruby-2.2.0/bin/ruby')
 
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor --nogroup -g ""'
@@ -160,18 +160,10 @@ augroup filetypes
   autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
-if filereadable(expand($HOME . '/.vimrc.local'))
-  source $HOME/.vimrc.local
+if filereadable(glob('~/.vimrc.local'))
+  source ~/.vimrc.local
 endif
 
-if !isdirectory('~/.vim/tmp/swap')
-  call mkdir('~/.vim/tmp/swap', 'p')
-endif
-
-if !isdirectory('~/.vim/tmp/backup')
-  call mkdir('~/.vim/tmp/backup', 'p')
-endif
-
-if !isdirectory('~/.vim/tmp/undo')
-  call mkdir('~/.vim/tmp/undo', 'p')
-endif
+silent execute '!mkdir -p $HOME/.tmp/swap'
+silent execute '!mkdir -p $HOME/.tmp/backup'
+silent execute '!mkdir -p $HOME/.tmp/undo'
