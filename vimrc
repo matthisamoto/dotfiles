@@ -157,6 +157,7 @@ augroup filetypes
   autocmd Filetype gitcommit setlocal textwidth=72 spell
   autocmd Filetype text setlocal spell
   autocmd Filetype markdown setlocal spell
+  autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
 if filereadable(expand($HOME . '/.vimrc.local'))
