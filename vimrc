@@ -22,7 +22,7 @@ let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor --nogroup -g ""
 " Options
 " ---------------------------------
 
-colorscheme ir_black
+colorscheme jellybeans
 filetype plugin indent on
 syntax on
 
