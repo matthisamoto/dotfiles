@@ -22,7 +22,7 @@ let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor --nogroup -g ""
 " Options
 " ---------------------------------
 
-colorscheme solarized
+colorscheme ir_black
 filetype plugin indent on
 syntax on
 
@@ -32,7 +32,6 @@ set background=dark
 set backspace=indent,eol,start
 set backupdir=~/.vim/tmp/backup/
 set breakat=\ |@-+;:,./?^I
-set cursorline
 set dir=~/.vim/tmp/swap/
 set encoding=utf-8
 set expandtab
@@ -44,6 +43,7 @@ set laststatus=2
 set linebreak
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set mouse=a
+set number
 set preserveindent
 set ruler
 set shiftround
