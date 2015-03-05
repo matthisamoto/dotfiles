@@ -10,6 +10,7 @@ if filereadable(glob('~/.vimrc.bundles'))
 endif
 
 let g:ctrlp_by_filename   = 1
+let g:ctrlp_match_func    = {'match' : 'matcher#cmatch' }
 let g:ctrlp_match_window  = 'bottom,order:btt,min:1,max:10,results:100'
 let g:ctrlp_max_depth     = 40
 let g:ctrlp_max_files     = 0
