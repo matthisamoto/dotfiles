@@ -31,7 +31,7 @@
 [help]
     autocorrect = 1
 [heroku]
-	  account = last
+    account = last
 [mergetool]
     keepBackup = true
 [push]
