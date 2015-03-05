@@ -9,14 +9,14 @@ if filereadable(glob('~/.vimrc.bundles'))
   source ~/.vimrc.bundles
 endif
 
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
+let g:ctrlp_by_filename   = 1
+let g:ctrlp_match_window  = 'bottom,order:btt,min:1,max:10,results:100'
+let g:ctrlp_max_depth     = 40
+let g:ctrlp_max_files     = 0
+let g:ctrlp_user_command  = 'ag %s --files-with-matches --nocolor --nogroup -g "" --ignore "vendor$\|node_modules$\|\.git$\|\.hg$\|\.svn$"'
 
-let g:syntastic_enable_signs=1
-let g:syntastic_ruby_mri_exec=expand('~/.rvm/rubies/ruby-2.2.0/bin/ruby')
-
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
-let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor --nogroup -g ""'
+let g:syntastic_enable_signs  = 1
+let g:syntastic_ruby_mri_exec = expand('~/.rvm/rubies/ruby-2.2.0/bin/ruby')
 
 " ---------------------------------
 " Options
@@ -38,6 +38,7 @@ set expandtab
 set formatoptions=cqrt
 set hidden
 set hlsearch
+set grepprg=ag\ --nogroup\ --nocolor
 set incsearch
 set laststatus=2
 set linebreak
