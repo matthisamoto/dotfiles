@@ -48,6 +48,7 @@ function prompt_git_prompt_info {
     echo -n " on $(prompt_git_prompt_dirty)${ref#refs/heads/}"
 }
 
-PROMPT='$(prompt_stopped_jobs)(%{$fg[cyan]%}%c%{$reset_color%}$(prompt_git_prompt_info)%{$reset_color%})\$ %{$reset_color%}'
+PROMPT='$(prompt_stopped_jobs)%{$fg[cyan]%}%c%{$reset_color%}$(prompt_git_prompt_info)%{$reset_color%}
+\$ %{$reset_color%}'
 RPROMPT=$''
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
