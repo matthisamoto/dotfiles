@@ -2,11 +2,13 @@ autoload -U colors
 colors
 
 setopt PROMPT_SUBST
-bindkey -e
+bindkey -v
 
-if [[ $(uname) == 'Darwin' ]]; then
-    stty erase ˆH
-fi
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^R' history-incremental-search-backward
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
 
 REPORTTIME=10
 LISTMAX=0
