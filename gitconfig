@@ -1,49 +1,53 @@
 [alias]
-    amend          = commit --amend
-    unadd          = reset HEAD
-    diff-added     = diff --cached
-    stat           = diff --stat -r
-    undo-commit    = reset --soft HEAD^
-    prep           = rebase -i @{upstream}
+  amend          = commit --amend
+  unadd          = reset HEAD
+  diff-added     = diff --cached
+  stat           = diff --stat -r
+  undo-commit    = reset --soft HEAD^
+  prep           = rebase -i @{upstream}
 
-    human           = name-rev --name-only
-    checkout-ours   = '!f() { git checkout --ours $@ && git add $@; }; f'
-    checkout-theirs = '!f() { git checkout --theirs $@ && git add $@; }; f'
-    conflicts       = "!f() { git ls-files -u | awk '{print $4}' | sort -u; }; f"
-    edit-conflicts  = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
-    new-commits     = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+  human           = name-rev --name-only
+  checkout-ours   = '!f() { git checkout --ours $@ && git add $@; }; f'
+  checkout-theirs = '!f() { git checkout --theirs $@ && git add $@; }; f'
+  conflicts       = "!f() { git ls-files -u | awk '{print $4}' | sort -u; }; f"
+  edit-conflicts  = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
+  new-commits     = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 [branch]
-    autosetuprebase = always
+  autosetuprebase = always
 [color]
-    branch = auto
-    diff   = auto
-    status = auto
-    ui     = true
+  branch = auto
+  diff   = auto
+  status = auto
+  ui     = true
 [core]
-    excludesfile = /Users/brett/.gitignore
-    editor       = vim
+  excludesfile = /Users/brett/.gitignore
+  editor       = vim
 [credential]
-    helper = osxkeychain
+  helper = osxkeychain
 [diff]
-    algorithm = patience
+  algorithm = patience
 [github]
-    user = brettbuddin
+  user = brettbuddin
 [help]
-    autocorrect = 1
+  autocorrect = 1
 [heroku]
-    account = last
+  account = last
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
 [mergetool]
-    keepBackup = true
+  keepBackup = false
+  prompt = false
 [push]
-    default = current
+  default = current
 [user]
-    name  = Brett Buddin
-    email = brett@buddin.us
+  name  = Brett Buddin
+  email = brett@buddin.us
 [filter "media"]
-    clean = git-media-clean %f
-    smudge = git-media-smudge %f
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
 [format]
-    pretty = "format:%Cblue%h%Creset %Creset%Cgreen%cn, %cr%Creset : %s%Creset%C(red)%d%Creset"
+  pretty = "format:%Cblue%h%Creset %Creset%Cgreen%cn, %cr%Creset : %s%Creset%C(red)%d%Creset"
 [status]
-    short  = true
-    branch = true
+  short  = true
+  branch = true
