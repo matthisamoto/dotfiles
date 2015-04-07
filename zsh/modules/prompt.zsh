@@ -15,6 +15,20 @@ LISTMAX=0
 
 PS1="%n@%m:%~%# "
 
+function zle-keymap-select() {
+  RPROMPT=""
+  [[ $KEYMAP = vicmd ]] && RPROMPT="NORMAL"
+  () { return $__prompt_status }
+  zle reset-prompt
+}
+
+function zle-line-init() {
+  typeset -g __prompt_status="$?"
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init
+
 function num_stopped_jobs {
     jobs -s | wc -l | sed -e "s/ //g"
 }
