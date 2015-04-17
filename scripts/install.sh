@@ -47,5 +47,5 @@ if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 fi
 
-vim -u $HOME/.vimrc.bundles +PluginInstall +PluginClean! +qa
+vim -u $HOME/.vimrc.bundles +NeoPluginInstall +NeoPluginClean! +qa
 cd $HOME/.vim/bundle/ctrlp-cmatcher/ && ./install.sh

@@ -3,27 +3,26 @@ if &compatible
 end
 
 filetype off
-set runtimepath+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-Plugin 'gmarik/Vundle.vim'
+NeoBundle 'JazzCore/ctrlp-cmatcher'
+NeoBundle 'chase/vim-ansible-yaml'
+NeoBundle 'danro/rename.vim'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'milkypostman/vim-togglelist'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'vim-ruby/vim-ruby'
 
-Plugin 'JazzCore/ctrlp-cmatcher'
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'danro/rename.vim'
-Plugin 'fatih/vim-go'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'guns/vim-clojure-static'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'kien/ctrlp.vim'
-Plugin 'milkypostman/vim-togglelist'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-vinegar'
-Plugin 'vim-ruby/vim-ruby'
-
-call vundle#end()
+call neobundle#end()
 filetype on
