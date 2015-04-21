@@ -87,6 +87,8 @@ let mapleader = ','
 " File and buffer navigation
 noremap <leader>f :CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>r :CtrlPMRUFiles<CR>
+noremap <leader>u :CtrlPUndo<CR>
 
 " Toggle Location and Quickfix Lists
 nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
