@@ -50,7 +50,7 @@ set preserveindent
 set ruler
 set shiftround
 set shiftwidth=2
-set shortmess=at
+set shortmess=atI
 set showcmd
 set showmode
 set softtabstop=2
