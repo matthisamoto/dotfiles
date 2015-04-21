@@ -56,11 +56,11 @@ set showmode
 set softtabstop=2
 set spelllang=en_us
 set statusline+=%f
+set statusline+=\ [%{fugitive#head()}]
 set statusline+=%=
 set statusline+=%{SyntasticStatuslineFlag()}%*
 set statusline+=\ [%l,%c\ %P]
 set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
-set statusline+=\ [%{fugitive#head()}]
 set tabstop=2
 set textwidth=120
 set undodir=~/.vim/tmp/undo/
