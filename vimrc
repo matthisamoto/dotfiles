@@ -45,14 +45,16 @@ set laststatus=2
 set linebreak
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set mouse=a
-set number
 set preserveindent
 set ruler
+set scrolloff=3
 set shiftround
-set shiftwidth=2
+set shiftwidth=4
 set shortmess=atI
 set showcmd
 set showmode
+set sidescroll=1
+set sidescrolloff=7
 set softtabstop=2
 set spelllang=en_us
 set statusline+=%f
@@ -61,7 +63,7 @@ set statusline+=%=
 set statusline+=%{SyntasticStatuslineFlag()}%*
 set statusline+=\ [%l,%c\ %P]
 set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
-set tabstop=2
+set tabstop=4
 set textwidth=120
 set undodir=~/.vim/tmp/undo/
 set undofile
@@ -72,6 +74,7 @@ set wildmenu
 
 set noerrorbells
 set nolist
+set nonumber
 set nosmartindent
 set nostartofline
 set noswapfile
@@ -125,6 +128,10 @@ vnoremap Q gq
 nnoremap / /\v
 vnoremap / /\v
 
+" Clear highlight and redraw
+nnoremap <C-L> :nohlsearch<CR><C-L>
+inoremap <C-L> <C-O>:nohlsearch<CR>
+
 
 " ---------------------------------
 " Commands
@@ -157,11 +164,10 @@ augroup filetypes
   autocmd BufRead,BufNewFile *.markdown set filetype=markdown
   autocmd BufRead,BufNewFile *.yml set filetype=yaml
 
-  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 omnifunc=rubycomplete#Complete
   autocmd Filetype gitcommit setlocal textwidth=72 spell
   autocmd Filetype text setlocal spell
   autocmd Filetype markdown setlocal spell
-  autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
 if filereadable(glob('~/.vimrc.local'))
