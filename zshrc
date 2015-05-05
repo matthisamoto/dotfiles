@@ -5,7 +5,7 @@ PATH=/usr/local/bin:/usr/local/sbin:$PATH                       # Machine
 PATH="$(brew --prefix python)/bin:$PATH"                        # Python
 PATH="$(brew --prefix heroku)/bin:$PATH"                        # Heroku
 PATH="$(brew --prefix go)/bin:$PATH"                            # Go
-PATH=$HOME/Projects/bin:$PATH                                   # My Go
+PATH=$HOME/Code/bin:$PATH                                       # My Go
 PATH=$HOME/.ansible/bin:$PATH                                   # Ansible
 PATH=$HOME/.bin:$PATH                                           # My tools
 

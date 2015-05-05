@@ -14,22 +14,26 @@ let g:ctrlp_match_func    = {'match': 'matcher#cmatch'}
 let g:ctrlp_match_window  = 'bottom,order:btt,min:1,max:10,results:1000'
 let g:ctrlp_max_depth     = 40
 let g:ctrlp_max_files     = 0
-let g:ctrlp_user_command  = 'ag %s --files-with-matches --nocolor --nogroup -g "" --ignore "vendor$\|node_modules$\|\.git$\|\.hg$\|\.svn$"'
+let g:ctrlp_user_command  = 'ag %s --files-with-matches --nocolor --nogroup -g "" --ignore="build/" --ignore "vendor/" --ignore="Godeps/" --ignore="node_modules/"'
 
 let g:syntastic_enable_signs  = 1
 let g:syntastic_ruby_mri_exec = expand('~/.rvm/rubies/ruby-2.2.0/bin/ruby')
+let g:syntastic_java_javac_custom_classpath_command = 'gradle buildClassPath'
+let g:syntastic_mode_map = {
+  \ "mode": "active",
+  \ "passive_filetypes": ["java"] }
 
 " ---------------------------------
 " Options
 " ---------------------------------
 
-colorscheme jellybeans
+colorscheme buddin
 filetype plugin indent on
 syntax on
 
 set autoindent
 set autoread
-set background=dark
+set background=light
 set backspace=indent,eol,start
 set backupdir=~/.vim/tmp/backup/
 set breakat=\ |@-+;:,./?^I
@@ -63,6 +67,7 @@ set statusline+=%=
 set statusline+=%{SyntasticStatuslineFlag()}%*
 set statusline+=\ [%l,%c\ %P]
 set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
+set suffixes=.bak,~,.o,.h,.info,.swp,.class
 set tabstop=4
 set textwidth=120
 set undodir=~/.vim/tmp/undo/
@@ -132,6 +137,14 @@ vnoremap / /\v
 nnoremap <C-L> :nohlsearch<CR><C-L>
 inoremap <C-L> <C-O>:nohlsearch<CR>
 
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 
 " ---------------------------------
 " Commands
@@ -163,7 +176,9 @@ augroup filetypes
   autocmd BufRead,BufNewFile *.mkd set filetype=markdown
   autocmd BufRead,BufNewFile *.markdown set filetype=markdown
   autocmd BufRead,BufNewFile *.yml set filetype=yaml
+  autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 
+  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
   autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 omnifunc=rubycomplete#Complete
   autocmd Filetype gitcommit setlocal textwidth=72 spell
   autocmd Filetype text setlocal spell
