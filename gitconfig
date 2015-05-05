@@ -20,7 +20,7 @@
   status = auto
   ui     = true
 [core]
-  excludesfile = /Users/brett/.gitignore
+  excludesfile = /Users/bbuddin/.gitignore
   editor       = vim
 [credential]
   helper = osxkeychain
