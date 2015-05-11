@@ -59,7 +59,7 @@ set showcmd
 set showmode
 set sidescroll=1
 set sidescrolloff=7
-set softtabstop=2
+set softtabstop=4
 set spelllang=en_us
 set statusline+=%f
 set statusline+=\ [%{fugitive#head()}]
