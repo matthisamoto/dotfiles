@@ -15,5 +15,5 @@ LISTMAX=0
 
 PS1="%n@%m:%~%# "
 
-PROMPT='%{$reset_color%}%B\$%b '
+PROMPT='%{$reset_color%}%c%B\$%b '
 RPROMPT=$''
