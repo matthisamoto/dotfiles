@@ -6,7 +6,7 @@ autocmd!
 " ---------------------------------
 
 if filereadable(glob('~/.vimrc.bundles'))
-  source ~/.vimrc.bundles
+    source ~/.vimrc.bundles
 endif
 
 let g:ctrlp_map           = ''
@@ -20,8 +20,8 @@ let g:syntastic_enable_signs  = 1
 let g:syntastic_ruby_mri_exec = expand('~/.rvm/rubies/ruby-2.2.0/bin/ruby')
 let g:syntastic_java_javac_custom_classpath_command = 'gradle buildClassPath'
 let g:syntastic_mode_map = {
-  \ "mode": "active",
-  \ "passive_filetypes": ["java"] }
+            \ "mode": "active",
+            \ "passive_filetypes": ["java"] }
 
 " ---------------------------------
 " Options
@@ -153,7 +153,7 @@ endfunc
 command! TrimWhitespace call TrimWhitespace()
 
 function! TrimWhitespace()
-  %s/\s\+$//e
+    %s/\s\+$//e
 endfunction
 
 
@@ -162,31 +162,57 @@ endfunction
 " ---------------------------------
 
 augroup main
-  autocmd!
+    autocmd!
 
-  autocmd VimResized * exe 'normal! \<c-w>='
+    autocmd VimResized * exe 'normal! \<c-w>='
 augroup END
 
 augroup filetypes
-  autocmd!
+    autocmd!
 
-  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-  autocmd BufRead,BufNewFile *.go set filetype=go
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd BufRead,BufNewFile *.mkd set filetype=markdown
-  autocmd BufRead,BufNewFile *.markdown set filetype=markdown
-  autocmd BufRead,BufNewFile *.yml set filetype=yaml
-  autocmd BufRead,BufNewFile *.gradle set filetype=groovy
+    autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+    autocmd BufRead,BufNewFile *.go set filetype=go
+    autocmd BufRead,BufNewFile *.md set filetype=markdown
+    autocmd BufRead,BufNewFile *.mkd set filetype=markdown
+    autocmd BufRead,BufNewFile *.markdown set filetype=markdown
+    autocmd BufRead,BufNewFile *.yml set filetype=yaml
+    autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 
-  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-  autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 omnifunc=rubycomplete#Complete
-  autocmd Filetype gitcommit setlocal textwidth=72 spell
-  autocmd Filetype text setlocal spell
-  autocmd Filetype markdown setlocal spell
+    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+    autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 omnifunc=rubycomplete#Complete
+    autocmd Filetype gitcommit setlocal textwidth=72 spell
+    autocmd Filetype text setlocal spell
+    autocmd Filetype markdown setlocal spell
+augroup END
+
+augroup encrypted
+    autocmd!
+    autocmd BufReadPre,FileReadPre      *.gpg set viminfo=
+    autocmd BufReadPre,FileReadPre      *.gpg set noswapfile
+    autocmd BufReadPre,FileReadPre      *.gpg set bin
+    autocmd BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
+    autocmd BufReadPre,FileReadPre      *.gpg let shsave=&sh
+    autocmd BufReadPre,FileReadPre      *.gpg let &sh='sh'
+    autocmd BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
+    autocmd BufReadPost,FileReadPost    *.gpg '[,']!gpg --decrypt --default-recipient-self 2> /dev/null
+    autocmd BufReadPost,FileReadPost    *.gpg let &sh=shsave
+
+    autocmd BufReadPost,FileReadPost    *.gpg set nobin
+    autocmd BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
+    autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
+
+    autocmd BufWritePre,FileWritePre    *.gpg set bin
+    autocmd BufWritePre,FileWritePre    *.gpg let shsave=&sh
+    autocmd BufWritePre,FileWritePre    *.gpg let &sh='sh'
+    autocmd BufWritePre,FileWritePre    *.gpg '[,']!gpg --encrypt --default-recipient-self 2>/dev/null
+    autocmd BufWritePre,FileWritePre    *.gpg let &sh=shsave
+
+    autocmd BufWritePost,FileWritePost  *.gpg silent u
+    autocmd BufWritePost,FileWritePost  *.gpg set nobin
 augroup END
 
 if filereadable(glob('~/.vimrc.local'))
-  source ~/.vimrc.local
+    source ~/.vimrc.local
 endif
 
 silent execute '!mkdir -p $HOME/.tmp/swap'
