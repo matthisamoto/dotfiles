@@ -1,17 +1,16 @@
 [alias]
-  amend          = commit --amend
-  unadd          = reset HEAD
-  diff-added     = diff --cached
-  stat           = diff --stat -r
-  undo-commit    = reset --soft HEAD^
-  prep           = rebase -i @{upstream}
-
-  human           = name-rev --name-only
+  amend           = commit --amend
   checkout-ours   = '!f() { git checkout --ours $@ && git add $@; }; f'
   checkout-theirs = '!f() { git checkout --theirs $@ && git add $@; }; f'
   conflicts       = "!f() { git ls-files -u | awk '{print $4}' | sort -u; }; f"
+  diff-added      = diff --cached
   edit-conflicts  = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
+  human           = name-rev --name-only
   new-commits     = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+  prep            = rebase -i @{upstream}
+  stat            = diff --stat -r
+  unadd           = reset HEAD
+  undo-commit     = reset --soft HEAD^
 [branch]
   autosetuprebase = always
 [color]
