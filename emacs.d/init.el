@@ -18,8 +18,7 @@
 (setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin" (getenv "PATH")))
 (require 'cl)
 
-(add-to-list 'load-path "~/.emacs.d/colors")
-(load "buddin-light")
+(load-user-file  "colors/buddin-light.el")
 (set-background-color "buddin-light")
 
 (load-user-file "packages.el")
