@@ -34,3 +34,8 @@
 (setq evil-move-cursor-back nil)
 (setq evil-leader/in-all-states 1)
 (setq helm-buffers-fuzzy-matching t)
+
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
