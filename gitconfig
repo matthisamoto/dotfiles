@@ -29,8 +29,6 @@
   user = brettbuddin
 [help]
   autocorrect = 1
-[heroku]
-  account = last
 [merge]
   tool = vimdiff
   conflictstyle = diff3
