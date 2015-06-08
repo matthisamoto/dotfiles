@@ -8,19 +8,21 @@
 
 (setq package-archive-enable-alist '(("melpa-stable" deft magit)))
 
-(defvar buddin/packages '(evil
+(defvar buddin/packages '(auto-complete
+			  deft
+			  evil
 			  evil-leader
-			  auto-complete
 			  flycheck
 			  go-mode
-			  writegood-mode
-			  projectile
 			  helm
 			  helm-ag
 			  helm-gtags
 			  helm-package
 			  helm-projectile
+			  magit
 			  org
+			  projectile
+			  writegood-mode
 			  yaml-mode)
   "Packages")
 
