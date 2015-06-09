@@ -13,8 +13,6 @@ bindkey '^h' backward-delete-char
 REPORTTIME=10
 LISTMAX=0
 
-PS1="%n@%m:%~%# "
-
 PROMPT='%{$reset_color%}%B%c \$%b '
 RPROMPT=$'$(vcs_info_wrapper)'
 
