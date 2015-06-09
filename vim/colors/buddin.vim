@@ -6,28 +6,29 @@ endif
 let g:colors_name="buddin"
 
 highlight Char           cterm=None           ctermbg=None      ctermfg=None
-highlight ColorColumn                         ctermbg=255                   
-highlight Comment        cterm=None           ctermbg=None      ctermfg=240 
+highlight ColorColumn                         ctermbg=255
+highlight Comment        cterm=None           ctermbg=None      ctermfg=240
 highlight Constant       cterm=None           ctermbg=None      ctermfg=None
 highlight DiffAdd        cterm=Bold           ctermbg=None      ctermfg=None
 highlight DiffChange     cterm=Bold           ctermbg=None      ctermfg=None
 highlight DiffDelete     cterm=Bold           ctermbg=None      ctermfg=None
 highlight DiffText       cterm=Reverse        ctermbg=None      ctermfg=None
 highlight Directory      cterm=Bold           ctermbg=None      ctermfg=None
-highlight Error          cterm=Reverse        ctermbg=15        ctermfg=9   
-highlight ErrorMsg       cterm=Standout       ctermbg=15        ctermfg=9   
+highlight Error          cterm=Reverse        ctermbg=15        ctermfg=9
+highlight ErrorMsg       cterm=Standout       ctermbg=15        ctermfg=9
+highlight ExtraWhitespace                     ctermbg=red
 highlight FoldColumn     cterm=Standout       ctermbg=None      ctermfg=None
 highlight Folded         cterm=Standout       ctermbg=None      ctermfg=None
 highlight Func           cterm=None           ctermbg=None      ctermfg=None
 highlight Identifier     cterm=None           ctermbg=None      ctermfg=None
 highlight Ignore         cterm=Bold           ctermbg=None      ctermfg=None
 highlight IncSearch      cterm=Reverse        ctermbg=None      ctermfg=None
-highlight LineNr         cterm=None           ctermbg=None      ctermfg=235 
+highlight LineNr         cterm=None           ctermbg=None      ctermfg=235
 highlight MatchParen     cterm=Bold           ctermbg=250       ctermfg=None
 highlight ModeMsg        cterm=Bold           ctermbg=None      ctermfg=None
 highlight MoreMsg        cterm=Bold           ctermbg=None      ctermfg=None
 highlight NonText        cterm=Bold           ctermbg=None      ctermfg=None
-highlight Normal         cterm=None           ctermbg=White     ctermfg=235 
+highlight Normal         cterm=None           ctermbg=White     ctermfg=235
 highlight Number         cterm=None           ctermbg=None      ctermfg=None
 highlight PreProc        cterm=None           ctermbg=None      ctermfg=None
 highlight Question       cterm=Standout       ctermbg=None      ctermfg=None
@@ -52,3 +53,9 @@ highlight javaExternal   cterm=Bold           ctermbg=None      ctermfg=None
 highlight javaScopeDecl  cterm=Bold           ctermbg=None      ctermfg=None
 highlight javaClassDecl  cterm=Bold           ctermbg=None      ctermfg=None
 highlight javaFuncDecl   cterm=Bold           ctermbg=None      ctermfg=None
+
+" trailing whitespace
+match ExtraWhitespace /\s\+$/
+
+" trailing whitespace before a tab
+match ExtraWhitespace /\s\+$\| \+\ze\t/
