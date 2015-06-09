@@ -15,5 +15,18 @@ LISTMAX=0
 
 PS1="%n@%m:%~%# "
 
-PROMPT='%{$reset_color%}%c%B\$%b '
-RPROMPT=$''
+PROMPT='%{$reset_color%}%B%c \$%b '
+RPROMPT=$'$(vcs_info_wrapper)'
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats "%b"
+zstyle ':vcs_info:*' formats "%b"
+zstyle ':vcs_info:*' enable git svn
+
+vcs_info_wrapper() {
+    vcs_info
+    if [ -n "$vcs_info_msg_0_" ]; then
+        echo "%{$fg[white]%}${vcs_info_msg_0_}%{$reset_color%}"
+    fi
+}

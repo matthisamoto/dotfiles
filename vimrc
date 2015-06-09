@@ -16,9 +16,11 @@ let g:ctrlp_max_depth     = 40
 let g:ctrlp_max_files     = 0
 let g:ctrlp_user_command  = 'ag %s --files-with-matches --nocolor --nogroup -g "" --ignore="build/" --ignore "vendor/" --ignore="Godeps/" --ignore="node_modules/"'
 
+let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs  = 1
-let g:syntastic_ruby_mri_exec = expand('~/.rvm/rubies/ruby-2.2.0/bin/ruby')
 let g:syntastic_java_javac_custom_classpath_command = 'gradle buildClassPath'
+let g:syntastic_ruby_mri_exec = expand('~/.rvm/rubies/ruby-2.2.0/bin/ruby')
+let g:syntastic_stl_format = '[%E{E: %e}%B{, }%W{W: %w}]'
 let g:syntastic_mode_map = {
             \ "mode": "active",
             \ "passive_filetypes": ["java"] }
@@ -62,11 +64,11 @@ set sidescrolloff=7
 set softtabstop=4
 set spelllang=en_us
 set statusline+=%f
-set statusline+=\ [%{fugitive#head()}]
+set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
 set statusline+=%=
 set statusline+=%{SyntasticStatuslineFlag()}%*
-set statusline+=\ [%l,%c\ %P]
-set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
+set statusline+=\ (%l,%c\)
+set statusline+=\ %P
 set suffixes=.bak,~,.o,.h,.info,.swp,.class
 set tabstop=4
 set textwidth=120
