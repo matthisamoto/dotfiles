@@ -37,8 +37,8 @@ highlight Special        cterm=Bold           ctermbg=None      ctermfg=None
 highlight SpecialKey     cterm=Bold           ctermbg=None      ctermfg=None
 highlight Statement      cterm=Bold           ctermbg=None      ctermfg=None
 highlight StatusLine     cterm=None           ctermbg=250       ctermfg=None
-highlight StatusLineNC   cterm=None           ctermbg=250       ctermfg=None
-highlight String         cterm=Underline      ctermbg=None      ctermfg=None
+highlight StatusLineNC   cterm=None           ctermbg=255       ctermfg=None
+highlight String         cterm=Underline      ctermbg=255       ctermfg=None
 highlight Title          cterm=Bold           ctermbg=None      ctermfg=None
 highlight Todo           cterm=None           ctermbg=None      ctermfg=None
 highlight Type           cterm=None           ctermbg=None      ctermfg=None
