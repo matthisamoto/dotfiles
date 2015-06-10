@@ -12,6 +12,7 @@
     conflicts       = "!f() { git ls-files -u | awk '{print $4}' | sort -u; }; f"
     edit-conflicts  = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
     new-commits     = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [branch]
     autosetuprebase = always
 [color]
@@ -20,14 +21,14 @@
     status = auto
     ui     = true
 [core]
-    excludesfile = /Users/brett/.gitignore
+	excludesfile = /Users/matt/.gitignore
     editor       = vim
 [credential]
     helper = osxkeychain
 [diff]
     algorithm = patience
 [github]
-    user = brettbuddin
+    user = matthisamoto
 [help]
     autocorrect = 1
 [heroku]
@@ -37,8 +38,8 @@
 [push]
     default = current
 [user]
-    name  = Brett Buddin
-    email = brett@buddin.us
+    name  = Matt Hisamoto
+    email = mwhisamoto@gmail.com
 [filter "media"]
     clean = git-media-clean %f
     smudge = git-media-smudge %f
@@ -47,3 +48,9 @@
 [status]
     short  = true
     branch = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

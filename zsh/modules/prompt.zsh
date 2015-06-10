@@ -19,7 +19,7 @@ function git_prompt_dirty {
     git_status=$(command git status 2>/dev/null | grep -v -e ^# | tail -n1)
     if [[ -n $git_status ]]
     then
-        echo "%{$fg[yellow]%}"
+        echo "%{$fg[cyan]%}"
     else
         echo "%{$fg[green]%}"
     fi
@@ -35,5 +35,5 @@ function git_prompt_info {
     echo -n "$(git_prompt_dirty)${ref#refs/heads/}"
 }
 
-PROMPT='[%c]\$ '
+PROMPT='[%{$fg[cyan]%}${PWD/#$HOME/~}%{$reset_color%}]\$ %{$reset_color%}'
 RPROMPT=$'$(git_prompt_info)%{$reset_color%}'
