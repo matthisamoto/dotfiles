@@ -63,11 +63,12 @@ set sidescroll=1
 set sidescrolloff=7
 set softtabstop=4
 set spelllang=en_us
-set statusline+=%f
-set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
+set statusline=%t
 set statusline+=%=
+set statusline+=%m%r%w
+set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
 set statusline+=%{SyntasticStatuslineFlag()}%*
-set statusline+=\ (%l,%c\)
+set statusline+=\ (%2.l,%2.c\)
 set statusline+=\ %P
 set suffixes=.bak,~,.o,.h,.info,.swp,.class
 set tabstop=4
