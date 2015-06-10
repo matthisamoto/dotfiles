@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 dotfiles_dir="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
-excluded=("scripts" "templates" "README.markdown")
+excluded=("scripts" "templates" "extras" "README.markdown")
 
 function isExcluded() {
     if [ -z "$1" ]
@@ -43,3 +43,9 @@ do
     fi
 done
 
+if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
+  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
+
+vim -u $HOME/.vimrc.bundles +NeoPluginInstall +NeoPluginClean! +qa
+cd $HOME/.vim/bundle/ctrlp-cmatcher/ && ./install.sh

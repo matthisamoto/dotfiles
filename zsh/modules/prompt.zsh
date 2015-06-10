@@ -2,19 +2,25 @@ autoload -U colors
 colors
 
 setopt PROMPT_SUBST
-bindkey -e
+bindkey -v
 
-if [[ $(uname) == 'Darwin' ]]; then
-    stty erase ˆH
-fi
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^R' history-incremental-search-backward
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
 
 REPORTTIME=10
 LISTMAX=0
 
-PS1="%n@%m:%~%# "
+PROMPT='%{$reset_color%}%B%c \$%b '
+RPROMPT=$'$(vcs_info_wrapper)'
 
-function git_prompt_dirty {
-    local git_status=''
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats "%b"
+zstyle ':vcs_info:*' formats "%b"
+zstyle ':vcs_info:*' enable git svn
 
     git_status=$(command git status 2>/dev/null | grep -v -e ^# | tail -n1)
     if [[ -n $git_status ]]
@@ -37,3 +43,10 @@ function git_prompt_info {
 
 PROMPT='[%{$fg[cyan]%}${PWD/#$HOME/~}%{$reset_color%}]\$ %{$reset_color%}'
 RPROMPT=$'$(git_prompt_info)%{$reset_color%}'
+
+vcs_info_wrapper() {
+    vcs_info
+    if [ -n "$vcs_info_msg_0_" ]; then
+        echo "%{$fg[white]%}${vcs_info_msg_0_}%{$reset_color%}"
+    fi
+}

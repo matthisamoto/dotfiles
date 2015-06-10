@@ -1,0 +1,31 @@
+if &compatible
+  set nocompatible
+end
+
+filetype off
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'JazzCore/ctrlp-cmatcher'
+NeoBundle 'chase/vim-ansible-yaml'
+NeoBundle 'danro/rename.vim'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'milkypostman/vim-togglelist'
+NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tfnico/vim-gradle'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-scripts/groovy.vim'
+
+call neobundle#end()
+filetype on

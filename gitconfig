@@ -1,50 +1,50 @@
 [alias]
-    amend          = commit --amend
-    unadd          = reset HEAD
-    diff-added     = diff --cached
-    stat           = diff --stat -r
-    undo-commit    = reset --soft HEAD^
-    prep           = rebase -i @{upstream}
-
-    human           = name-rev --name-only
-    checkout-ours   = '!f() { git checkout --ours $@ && git add $@; }; f'
-    checkout-theirs = '!f() { git checkout --theirs $@ && git add $@; }; f'
-    conflicts       = "!f() { git ls-files -u | awk '{print $4}' | sort -u; }; f"
-    edit-conflicts  = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
-    new-commits     = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  amend           = commit --amend
+  checkout-ours   = '!f() { git checkout --ours $@ && git add $@; }; f'
+  checkout-theirs = '!f() { git checkout --theirs $@ && git add $@; }; f'
+  conflicts       = "!f() { git ls-files -u | awk '{print $4}' | sort -u; }; f"
+  diff-added      = diff --cached
+  edit-conflicts  = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; $EDITOR `f`"
+  human           = name-rev --name-only
+  new-commits     = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+  prep            = rebase -i @{upstream}
+  stat            = diff --stat -r
+  unadd           = reset HEAD
+  undo-commit     = reset --soft HEAD^
 [branch]
-    autosetuprebase = always
+  autosetuprebase = always
 [color]
-    branch = auto
-    diff   = auto
-    status = auto
-    ui     = true
+  branch = auto
+  diff   = auto
+  status = auto
+  ui     = true
 [core]
-	excludesfile = /Users/matt/.gitignore
-    editor       = vim
+  excludesfile = ~/.gitignore
+  editor       = vim
 [credential]
-    helper = osxkeychain
+  helper = osxkeychain
 [diff]
-    algorithm = patience
+  algorithm = patience
 [github]
     user = matthisamoto
 [help]
-    autocorrect = 1
-[heroku]
-	  account = last
+  autocorrect = 1
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
 [mergetool]
-    keepBackup = true
+  keepBackup = false
+  prompt = false
 [push]
-    default = current
+  default = current
 [user]
     name  = Matt Hisamoto
     email = mwhisamoto@gmail.com
 [filter "media"]
-    clean = git-media-clean %f
-    smudge = git-media-smudge %f
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
 [format]
-    pretty = "format:%Cblue%h%Creset %Creset%Cgreen%cn, %cr%Creset : %s%Creset%C(red)%d%Creset"
+  pretty = "format:%Cblue%h%Creset %Creset%Cgreen%cn, %cr%Creset : %s%Creset%C(red)%d%Creset"
 [status]
     short  = true
     branch = true
