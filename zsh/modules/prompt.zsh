@@ -22,6 +22,7 @@ zstyle ':vcs_info:*' actionformats "%b"
 zstyle ':vcs_info:*' formats "%b"
 zstyle ':vcs_info:*' enable git svn
 
+function git_prompt_dirty {
     git_status=$(command git status 2>/dev/null | grep -v -e ^# | tail -n1)
     if [[ -n $git_status ]]
     then
